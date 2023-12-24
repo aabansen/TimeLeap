@@ -41,7 +41,7 @@ def show_recordings(output_dir):
 
 def take_screenshot(count):
 	image = pyautogui.screenshot()
-	image.save(load_path(f"screenshots/{("%04d" % (0000 + count))}.png"))
+	image.save(load_path(f"screenshots/image_{count}.png"))
 
 def clear_screenshots():
 	files = os.listdir("screenshots")
@@ -51,7 +51,7 @@ def clear_screenshots():
 		os.remove(file_path)
 
 def render_video(fps, name, output_path):
-	render_cmd = f"cd screenshots && ffmpeg -framerate {fps} -i %4d.png {name}.mp4"
+	render_cmd = f'cd screenshots && ffmpeg -framerate {fps} -i "image_%d.png" {name}.mp4'
 
 	os.system(render_cmd)
 	os.rename(load_path(f"screenshots/{name}.mp4"), load_path(f"{output_path}/{name}.mp4"))
