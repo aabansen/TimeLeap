@@ -79,6 +79,9 @@ class App:
 		self.font = pygame.font.Font("res/RandyGGRegular.ttf", 20)
 		pygame.time.set_timer(self.timer, 2000)
 
+		if not os.path.exists("screenshots"):
+			os.makedirs("screenshots")
+
 		self.timelapse_data = load_settings("res/settings.json")
 
 		self.images = {
