@@ -51,7 +51,7 @@ def clear_screenshots():
 		os.remove(file_path)
 
 def render_video(fps, name, output_path):
-	render_cmd = f"cd screenshots && ffmpeg -framerate {fps} -i %4d.png -c:v libx264 -pix_fmt yuv420p {name}.mp4"
+	render_cmd = f"cd screenshots && ffmpeg -framerate {fps} -i %4d.png {name}.mp4"
 
 	os.system(render_cmd)
 	os.rename(load_path(f"screenshots/{name}.mp4"), load_path(f"{output_path}/{name}.mp4"))
