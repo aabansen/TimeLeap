@@ -69,6 +69,7 @@ class App:
 	def __init__(self):
 		self.size = (700, 700)
 		self.win = pygame.display.set_mode(self.size)
+		pygame.display.set_caption("TimeLeap")
 		self.clock = pygame.time.Clock()
 
 	def setup(self):	
@@ -83,7 +84,10 @@ class App:
 
 		self.images = {
 			"logo": scale_img(load_img("res/logo.png"), 2),
+                         "icon": load_img("res/clock.png")
 		}
+
+		pygame.display.set_icon(self.images["icon"])
 
 		self.buttons = {
 			"record": Button(150, 600, "Record", self.font, lambda: self.record()),
